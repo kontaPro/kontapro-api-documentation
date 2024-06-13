@@ -2,32 +2,23 @@
 
 1. store-accounts end point:  
 
-[post] www.kontapro.com/kontapro-api/store-accounts
+[post] https://easesystemtech.com/kontapro-api/store-accounts
        
 
-[Get] www.kontapro.com/kontapro-api/store-accounts/{storeId}
+[Get] https://easesystemtech.com/kontapro-api/store-accountsstore-accounts/{storeId}
       
 
-2. Store expenses endpoint: 
+2. Store stocks endpoint: 
 
-[Post] www.kontapro.com/kontapro-api/expenses
+[Get] https://easesystemtech.com/kontapro-api/store-accounts.php/{storeId}
 
+[Get] https://easesystemtech.com/kontapro-api/store-accounts.php/{storeId}{$searchKeyWord}
 
-[Get] www.kontapro.com/kontapro-api/expenses/{storeId}
+3. Store products endpoint: 
 
+[Post] https://easesystemtech.com/kontapro-api/products.php
 
-
-3. Store stocks endpoint: 
-
-[Get] www.kontapro.com/kontapro-api/stocks/{storeId}
-
-[Get] www.kontapro.com/kontapro-api/stocks/{storeId}{$searchKeyWord}
-
-4. Store products endpoint: 
-
-[Post] www.kontapro.com/kontapro-api/products
-
-[Get] www.kontapro.com/kontapro-api/products/{storeId}
+[Get] https://easesystemtech.com/kontapro-api/products.php{storeId}
 
 [Get] www.kontapro.com/kontapro-api/products/{storeId}{$searchKeyWord}
 
@@ -36,9 +27,9 @@
 
 5. Store sales endpoint: 
 
-[Post] www.kontapro.com/kontapro-api/saless
+[Post] https://easesystemtech.com/kontapro-api/stocks.php
 
-[Get] www.kontapro.com/kontapro-api/sales/{storeId}{$productId}{$productId}
+[Get] https://easesystemtech.com/kontapro-api/stocks.php/{storeId}{$productId}{$productId}
 
 #Documentation draft:
 
@@ -89,60 +80,6 @@ Response body:
 }
 ```
 
-**2. Store Expenses Endpoints**
-
-- [POST] /expenses
-
-Creates a new expense record for a store.
-
-Request body:
-
-```json
-{
-  "storeId": "string",
-  "description": "string",
-  "amount": "number",
-  "date": "string"
-}
-```
-
-Response body:
-
-```json
-{
-  "expenseId": "string",
-  "storeId": "string",
-  "description": "string",
-  "amount": "number",
-  "date": "string"
-}
-```
-
-- [GET] /expenses/{storeId}
-
-Retrieves all expenses associated with the store identified by `storeId`.
-
-Response body:
-
-```json
-[
-  {
-    "expenseId": "string",
-    "storeId": "string",
-    "description": "string",
-    "amount": "number",
-    "date": "string"
-  },
-  {
-    "expenseId": "string",
-    "storeId": "string",
-    "description": "string",
-    "amount": "number",
-    "date": "string"
-  },
-  ...
-]
-```
 
 **3. Store Stocks Endpoints**
 
