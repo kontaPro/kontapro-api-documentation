@@ -1,226 +1,236 @@
-# kontapro-api-documentation
+Certainly! Here's the README-style file for the KontaPro API based on the provided documentation:
 
-1. store-accounts end point:  
+---
 
-[post] https://easesystemtech.com/kontapro-api/store-accounts
-       
+# KontaPro API Documentation
 
-[Get] https://easesystemtech.com/kontapro-api/store-accountsstore-accounts/{storeId}
-      
+Welcome to the KontaPro API documentation. This API provides endpoints to manage store accounts, products, stocks, sales, and user authentication for your business needs.
 
-2. Store stocks endpoint: 
+## Base URL
 
-[Get] https://easesystemtech.com/kontapro-api/store-accounts.php/{storeId}
+The base URL for accessing KontaPro API endpoints is:
 
-[Get] https://easesystemtech.com/kontapro-api/store-accounts.php/{storeId}{$searchKeyWord}
-
-3. Store products endpoint: 
-
-[Post] https://easesystemtech.com/kontapro-api/products.php
-
-[Get] https://easesystemtech.com/kontapro-api/products.php{storeId}
-
-[Get] www.kontapro.com/kontapro-api/products/{storeId}{$searchKeyWord}
-
-[Put] www.kontapro.com/kontapro-api/products/{storeId}
-
-
-5. Store sales endpoint: 
-
-[Post] https://easesystemtech.com/kontapro-api/stocks.php
-
-[Get] https://easesystemtech.com/kontapro-api/stocks.php/{storeId}{$productId}{$productId}
-
-#Documentation draft:
-
-Sure! Here are the JSON response bodies for the endpoints in your REST API:
-
-**1. Store Accounts Endpoints**
-
-- [POST] /store-accounts
-
-Creates a new store account.
-
-Request body:
-
-```json
-{
-  "name": "string",
-  "address": "string",
-  "phone": "string",
-  "email": "string"
-}
+```
+https://easesystemtech.com/kontapro-api/
 ```
 
-Response body:
+## Endpoints
 
-```json
-{
-  "storeId": "string",
-  "name": "string",
-  "address": "string",
-  "phone": "string",
-  "email": "string"
-}
-```
+### 1. Store Accounts
 
-- [GET] /store-accounts/{storeId}
+**Create Store Account**
 
-Retrieves information about a specific store account identified by `storeId`.
+- **Method:** POST
+- **URL:** `/store-accounts`
+- **Description:** Creates a new store account.
 
-Response body:
-
-```json
-{
-  "storeId": "string",
-  "name": "string",
-  "address": "string",
-  "phone": "string",
-  "email": "string"
-}
-```
-
-
-**3. Store Stocks Endpoints**
-
-- [GET] /stocks/{storeId}
-
-Retrieves the stock levels of all products for the store identified by `storeId`.
-
-Response body:
-
-```json
-[
+  **Request Body Example:**
+  ```json
   {
-    "productId": "string",
     "name": "string",
-    "description": "string",
-    "price": "number",
-    "stockLevel": "number"
-  },
+    "address": "string",
+    "phone": "string",
+    "email": "string"
+  }
+  ```
+
+  **Response Example:**
+  ```json
   {
-    "productId": "string",
+    "storeId": "string",
     "name": "string",
-    "description": "string",
-    "price": "number",
-    "stockLevel": "number"
-  },
-  ...
-]
-```
+    "address": "string",
+    "phone": "string",
+    "email": "string"
+  }
+  ```
 
-- [GET] /stocks/{storeId}{$searchKeyWord}
+**Retrieve Store Account**
 
-Retrieves the stock levels of products that match the `searchKeyWord` for the store identified by `storeId`.
+- **Method:** GET
+- **URL:** `/store-accounts/{storeId}`
+- **Description:** Retrieves information about a specific store account identified by `storeId`.
 
-Response body:
-
-```json
-[
+  **Response Example:**
+  ```json
   {
-    "productId": "string",
+    "storeId": "string",
     "name": "string",
-    "description": "string",
-    "price": "number",
-    "stockLevel": "number"
-  },
-  {
-    "productId": "string",
-    "name": "string",
-    "description": "string",
-    "price": "number",
-    "stockLevel": "number"
-  },
-  ...
-]
-```
+    "address": "string",
+    "phone": "string",
+    "email": "string"
+  }
+  ```
 
-**4. Store Products Endpoints**
+### 2. Store Stocks
 
-- [POST] /products
+**Retrieve Stock Levels**
 
-Creates a new product for a store.
+- **Method:** GET
+- **URL:** `/store-accounts.php/{storeId}`
+- **Description:** Retrieves the stock levels of all products for the store identified by `storeId`.
 
-Request body:
-
-```json
-{
-  "storeId": "string",
-  "name": "string",
-  "description": "string",
-  "price": "number",
-  "stockLevel": "number"
-}
-```
-
-Response body:
-
-```json
-{
-  "productId": "string",
-  "storeId": "string",
-  "name": "string"
-}
-
-```
-
-**5. Store Sales Endpoints**
-
-- [POST] /sales
-
-Creates a new sales record for a store.
-
-Request body:
-
-```json
-{
-  "storeId": "string",
-  "products": [
+  **Response Example:**
+  ```json
+  [
     {
       "productId": "string",
-      "quantity": "number"
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
     },
     {
       "productId": "string",
-      "quantity": "number"
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
     },
     ...
-  ],
-  "totalPrice": "number",
-  "date": "string"
-}
-```
+  ]
+  ```
 
-Response body:
+**Search Stock Levels**
 
-```json
-{
-  "salesId": "string",
-  "storeId": "string",
-  "products": [
+- **Method:** GET
+- **URL:** `/store-accounts.php/{storeId}{$searchKeyWord}`
+- **Description:** Retrieves the stock levels of products that match the `searchKeyWord` for the store identified by `storeId`.
+
+  **Response Example:**
+  ```json
+  [
     {
       "productId": "string",
-      "quantity": "number"
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
     },
     {
       "productId": "string",
-      "quantity": "number"
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
     },
     ...
-  ],
-  "totalPrice": "number",
-  "date": "string"
-}
-```
+  ]
+  ```
 
-- [GET] /sales/{storeId}{$productId}{$productId}
+### 3. Store Products
 
-Retrieves sales records for a store identified by `storeId` for the products identified by `productId`.
+**Create Product**
 
-Response body:
+- **Method:** POST
+- **URL:** `/products.php`
+- **Description:** Creates a new product for a store.
 
-```json
-[
+  **Request Body Example:**
+  ```json
+  {
+    "storeId": "string",
+    "name": "string",
+    "description": "string",
+    "price": "number",
+    "stockLevel": "number"
+  }
+  ```
+
+  **Response Example:**
+  ```json
+  {
+    "productId": "string",
+    "storeId": "string",
+    "name": "string"
+  }
+  ```
+
+**Retrieve Products**
+
+- **Method:** GET
+- **URL:** `/products.php/{storeId}`
+- **Description:** Retrieves a list of all products available in a specific store identified by `storeId`.
+
+  **Response Example:**
+  ```json
+  [
+    {
+      "productId": "string",
+      "storeId": "string",
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
+    },
+    {
+      "productId": "string",
+      "storeId": "string",
+      "name": "string",
+      "description": "string",
+      "price": "number",
+      "stockLevel": "number"
+    },
+    ...
+  ]
+  ```
+
+**Update Product**
+
+- **Method:** PUT
+- **URL:** `/products.php/{storeId}`
+- **Description:** Updates details of an existing product in the store such as name, description, price, and stock level.
+
+  **Request Body Example:**
+  ```json
+  {
+    "storeId": "string",
+    "productId": "string",
+    "name": "string",
+    "description": "string",
+    "price": "number",
+    "stockLevel": "number"
+  }
+  ```
+
+  **Response Example:**
+  ```json
+  {
+    "status": "success",
+    "message": "Product updated successfully"
+  }
+  ```
+
+### 4. Store Sales
+
+**Create Sales Record**
+
+- **Method:** POST
+- **URL:** `/sales.php`
+- **Description:** Creates a new sales record for a store.
+
+  **Request Body Example:**
+  ```json
+  {
+    "storeId": "string",
+    "products": [
+      {
+        "productId": "string",
+        "quantity": "number"
+      },
+      {
+        "productId": "string",
+        "quantity": "number"
+      },
+      ...
+    ],
+    "totalPrice": "number",
+    "date": "string"
+  }
+  ```
+
+  **Response Example:**
+  ```json
   {
     "salesId": "string",
     "storeId": "string",
@@ -237,24 +247,56 @@ Response body:
     ],
     "totalPrice": "number",
     "date": "string"
-  },
-  {
-    "salesId": "string",
-    "storeId": "string",
-    "products": [
-      {
-        "productId": "string",
-        "quantity": "number"
-      },
-      {
-        "productId": "string",
-        "quantity": "number"
-      },
-      ...
-    ],
-    "totalPrice": "number",
-    "date": "string"
-  },
-  ...
-]
-```
+  }
+  ```
+
+**Retrieve Sales Records**
+
+- **Method:** GET
+- **URL:** `/sales.php/{storeId}{$productId}{$productId}`
+- **Description:** Retrieves sales records for a store identified by `storeId` for the products identified by `productId`.
+
+  **Response Example:**
+  ```json
+  [
+    {
+      "salesId": "string",
+      "storeId": "string",
+      "products": [
+        {
+          "productId": "string",
+          "quantity": "number"
+        },
+        {
+          "productId": "string",
+          "quantity": "number"
+        },
+        ...
+      ],
+      "totalPrice": "number",
+      "date": "string"
+    },
+    {
+      "salesId": "string",
+      "storeId": "string",
+      "products": [
+        {
+          "productId": "string",
+          "quantity": "number"
+        },
+        {
+          "productId": "string",
+          "quantity": "number"
+        },
+        ...
+      ],
+      "totalPrice": "number",
+      "date": "string"
+    },
+    ...
+  ]
+  ```
+
+---
+
+This README-style document provides comprehensive information about each endpoint in the KontaPro API, including request body examples and response structures. Use this guide to understand how to interact with the API effectively for managing store operations and sales. Adjust parameters and utilize appropriate HTTP methods (`POST`, `GET`, `PUT`) as per your application's requirements. Replace placeholders (`{storeId}`, `{productId}`, etc.) with actual values when making API requests.
