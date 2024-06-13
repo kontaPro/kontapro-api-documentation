@@ -1,4 +1,4 @@
-Certainly! Here's the README-style file for the KontaPro API based on the provided documentation:
+Certainly! Here's the updated README-style file with the note added:
 
 ---
 
@@ -59,6 +59,29 @@ https://easesystemtech.com/kontapro-api/
     "address": "string",
     "phone": "string",
     "email": "string"
+  }
+  ```
+
+**Temporary Signup Process**
+
+- **Method:** POST
+- **URL:** `/store-accounts/processSignup`
+- **Description:** Temporary endpoint allowing users to sign up for an account. This endpoint is a temporary fix.
+
+  **Request Body Example:**
+  ```json
+  {
+    "store-owner": "string",
+    "account-password": "string",
+    "owner-contact-number": "string"
+  }
+  ```
+
+  **Response Example:**
+  ```json
+  {
+    "id": "string",
+    "username": "string"
   }
   ```
 
@@ -300,3 +323,5 @@ https://easesystemtech.com/kontapro-api/
 ---
 
 This README-style document provides comprehensive information about each endpoint in the KontaPro API, including request body examples and response structures. Use this guide to understand how to interact with the API effectively for managing store operations and sales. Adjust parameters and utilize appropriate HTTP methods (`POST`, `GET`, `PUT`) as per your application's requirements. Replace placeholders (`{storeId}`, `{productId}`, etc.) with actual values when making API requests.
+
+**Note:** The `/store-accounts/processSignup` endpoint is a temporary solution to allow users to sign up for accounts. It is subject to change or removal in future updates.
