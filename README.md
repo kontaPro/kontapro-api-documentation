@@ -1,4 +1,4 @@
-### DOCUMENTAÇÃO DE REFERÊNCIA DOS ENDPOINTS DA API KONTAPRO POS
+### DOCUMENTAÇÃO DE REFERÊNCIA DOS ENDPOINTS DA API do KONTAPRO MOBILE POS
 
 Este documento fornece detalhes abrangentes dos endpoints  disponíveis na API  do   Kontapro POS, Cada endpoint é descrito com seu métodos, URL, parâmetros, corpo da requisição (quando aplicável) e formato da resposta.
 
