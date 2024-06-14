@@ -1,42 +1,43 @@
-### kontapro POS API ENDPOINT REFERENCE DOCUMENTATION
+### DOCUMENTAÇÃO DE REFERÊNCIA DOS ENDPOINTS DA API KONTAPRO POS
 
-This document provides comprehensive details of the API endpoints available in the kontapro POS system. Each endpoint is described with its method, URL, parameters, request body (where applicable), and response format.
+Este documento fornece detalhes abrangentes dos endpoints  disponíveis na API  do   Kontapro POS, Cada endpoint é descrito com seu métodos, URL, parâmetros, corpo da requisição (quando aplicável) e formato da resposta.
 
+### Ferramenta para testar: Postman ou similares.
 ---
 
-#### 1. Sales Endpoint
+#### 1. Endpoint de Vendas
 
-**Endpoint URL:** `https://easesystemtech.com/kontapro-api/sales.php`
+**URL do Endpoint:** `https://easesystemtech.com/kontapro-api/sales.php`
 
-**Description:** Manage sales data within the POS system.
+**Descrição:** Gerenciar dados de vendas dentro do sistema POS.
 
-##### Fetch Weekly Sales Details
+##### Buscar Detalhes Semanais de Vendas
 
-- **Method:** GET
-- **Operation:** Retrieve sales details for a specific week.
-- **Parameters:**
-  - `store_id` (string): The ID of the store.
-  - `first_day_of_week` (string): The start date of the week (YYYY-MM-DD).
-  - `last_day_of_week` (string): The end date of the week (YYYY-MM-DD).
+- **Método:** GET
+- **Operação:** Recuperar detalhes de vendas para uma semana específica.
+- **Parâmetros:**
+  - `store_id` (string): O ID da loja.
+  - `first_day_of_week` (string): Data de início da semana (AAAA-MM-DD).
+  - `last_day_of_week` (string): Data de fim da semana (AAAA-MM-DD).
 
-**Request Example:**
+**Exemplo de Requisição:**
 ```http
 GET https://easesystemtech.com/kontapro-api/sales.php?store_id=121&first_day_of_week=2023-05-20&last_day_of_week=2023-05-26
 ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
   "weekly_sales": [
     {
-      "product_name": "Product 1",
+      "product_name": "Produto 1",
       "total_unit_sold": 10,
       "total_gross_sales": 100,
       "sold_at": "2023-05-20"
     },
     {
-      "product_name": "Product 2",
+      "product_name": "Produto 2",
       "total_unit_sold": 5,
       "total_gross_sales": 50,
       "sold_at": "2023-05-21"
@@ -46,31 +47,31 @@ GET https://easesystemtech.com/kontapro-api/sales.php?store_id=121&first_day_of_
 }
 ```
 
-##### Fetch Daily Sales Details
+##### Buscar Detalhes Diários de Vendas
 
-- **Method:** GET
-- **Operation:** Retrieve sales details for a specific day.
-- **Parameters:**
-  - `store_id` (string): The ID of the store.
-  - `date_sale` (string): The date of the sales (YYYY-MM-DD).
+- **Método:** GET
+- **Operação:** Recuperar detalhes de vendas para um dia específico.
+- **Parâmetros:**
+  - `store_id` (string): O ID da loja.
+  - `date_sale` (string): Data das vendas (AAAA-MM-DD).
 
-**Request Example:**
+**Exemplo de Requisição:**
 ```http
 GET https://easesystemtech.com/kontapro-api/sales.php?store_id=121&date_sale=2023-06-14
 ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
   "daily_sales": [
     {
-      "product_name": "Product 1",
+      "product_name": "Produto 1",
       "total_unit_sold": 5,
       "total_gross_sales": 50
     },
     {
-      "product_name": "Product 2",
+      "product_name": "Produto 2",
       "total_unit_sold": 3,
       "total_gross_sales": 30
     }
@@ -79,11 +80,11 @@ GET https://easesystemtech.com/kontapro-api/sales.php?store_id=121&date_sale=202
 }
 ```
 
-##### Submit Sales Data
+##### Submeter Dados de Vendas
 
-- **Method:** POST
-- **Operation:** Submit sales data.
-- **Request Body:**
+- **Método:** POST
+- **Operação:** Enviar dados de vendas.
+- **Corpo da Requisição:**
   ```json
   {
     "store_id": "121",
@@ -102,108 +103,108 @@ GET https://easesystemtech.com/kontapro-api/sales.php?store_id=121&date_sale=202
   }
   ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
-  "message": "Sales data submitted successfully"
+  "message": "Dados de vendas enviados com sucesso"
 }
 ```
 
 ---
 
-#### 2. Products Endpoint
+#### 2. Endpoint de Produtos
 
-**Endpoint URL:** `https://easesystemtech.com/kontapro-api/products.php`
+**URL do Endpoint:** `https://easesystemtech.com/kontapro-api/products.php`
 
-**Description:** Manage the product catalogue within the POS system.
+**Descrição:** Gerenciar o catálogo de produtos dentro do sistema POS.
 
-##### Fetch Product Catalogue
+##### Buscar Catálogo de Produtos
 
-- **Method:** GET
-- **Operation:** Retrieve the list of products in the store's catalogue.
-- **Parameters:**
-  - `store_id` (string): The ID of the store.
+- **Método:** GET
+- **Operação:** Recuperar a lista de produtos no catálogo da loja.
+- **Parâmetros:**
+  - `store_id` (string): O ID da loja.
 
-**Request Example:**
+**Exemplo de Requisição:**
 ```http
 GET https://easesystemtech.com/kontapro-api/products.php?store_id=121
 ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
   "product_catalogue": [
     {
       "product_id": "1",
-      "product_name": "Product 1",
+      "product_name": "Produto 1",
       "product_price": 10
     },
     {
       "product_id": "2",
-      "product_name": "Product 2",
+      "product_name": "Produto 2",
       "product_price": 20
     }
   ]
 }
 ```
 
-##### Add Product to Catalogue
+##### Adicionar Produto ao Catálogo
 
-- **Method:** POST
-- **Operation:** Add a new product to the store's catalogue.
-- **Request Body:**
+- **Método:** POST
+- **Operação:** Adicionar um novo produto ao catálogo da loja.
+- **Corpo da Requisição:**
   ```json
   {
     "store_id": "121",
-    "product_name": "Product 1",
+    "product_name": "Produto 1",
     "barcode": "123456789012",
-    "price": "10.00",
+    "price": "10,00",
     "opening_stock": "50"
   }
   ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
-  "message": "Product added successfully"
+  "message": "Produto adicionado com sucesso"
 }
 ```
 
 ---
 
-#### 3. Stocks Endpoint
+#### 3. Endpoint de Estoques
 
-**Endpoint URL:** `https://easesystemtech.com/kontapro-api/stocks.php`
+**URL do Endpoint:** `https://easesystemtech.com/kontapro-api/stocks.php`
 
-**Description:** Manage stock details within the POS system.
+**Descrição:** Gerenciar detalhes de estoque dentro do sistema POS.
 
-##### Fetch Stock Details
+##### Buscar Detalhes de Estoque
 
-- **Method:** GET
-- **Operation:** Retrieve the stock details for the store.
-- **Parameters:**
-  - `store_id` (string): The ID of the store.
+- **Método:** GET
+- **Operação:** Recuperar os detalhes de estoque para a loja.
+- **Parâmetros:**
+  - `store_id` (string): O ID da loja.
 
-**Request Example:**
+**Exemplo de Requisição:**
 ```http
 GET https://easesystemtech.com/kontapro-api/stocks.php?store_id=121
 ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
   "stock_details": [
     {
-      "product_name": "Product 1",
+      "product_name": "Produto 1",
       "product_price": 10,
       "remaining_items_in_shelves": 100
     },
     {
-      "product_name": "Product 2",
+      "product_name": "Produto 2",
       "product_price": 20,
       "remaining_items_in_shelves": 50
     }
@@ -213,58 +214,60 @@ GET https://easesystemtech.com/kontapro-api/stocks.php?store_id=121
 
 ---
 
-#### 4. Store Accounts Endpoint
+#### 4. Endpoint de Contas da Loja
 
-**Endpoint URL:** `https://easesystemtech.com/kontapro-api/store-accounts.php`
+**URL do Endpoint:** `https://easesystemtech.com/kontapro-api/store-accounts.php`
 
-**Description:** Manage user authentication and registration within the POS system.
+**Descrição:** Gerenciar autenticação e registro de usuários dentro do sistema POS.
 
 ##### Login
 
-- **Method:** POST
-- **Operation:** Authenticate the user and retrieve user details.
-- **Request Body:**
+- **Método:** POST
+- **Operação:** Autenticar o usuário e recuperar detalhes do usuário.
+- **Corpo da Requisição:**
   ```json
   {
-    "user_id": "example_user",
-    "password": "example_password"
+    "user_id": "exemplo_usuario",
+    "password": "exemplo_senha"
   }
   ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
   "id": "store_123",
-  "username": "example_user",
-  "storename": "Example Store",
-  "message": "Login successful"
+  "username": "exemplo_usuario",
+  "storename": "Exemplo de Loja",
+  "message": "Login realizado com sucesso"
 }
 ```
 
-##### Signup
+##### Cadastro
 
-- **Method:** POST
-- **Operation:** Register a new user.
-- **Request Body:**
+- **Método:** POST
+- **Operação:** Registrar um novo usuário.
+- **Corpo da Requisição:**
   ```json
   {
-    "username": "example_user",
-    "password": "example_password",
-    "storename": "Example Store"
+    "username": "exemplo_usuario",
+    "password": "exemplo_senha",
+    "storename": "Exemplo de Loja"
   }
   ```
 
-**Response Example:**
+**Exemplo de Resposta:**
 ```json
 {
   "status": true,
-  "message": "Signup successful"
+  "message": "Cadastro realizado com sucesso"
 }
 ```
 
-> **Note:** The `process-signup` endpoint is a temporary fix and may be replaced or updated in the future. The signup process will be fully supported by the `store-accounts` endpoint.
+> **Observação:** O endpoint `process-signup` é uma solução temporária e pode ser substituído ou atualizado no futuro. O processo de cadastro será totalmente suportado pelo endpoint `store-accounts`.
 
 ---
 
-This document provides a detailed reference for the API endpoints available in the kontapro POS system. Use this reference to integrate and interact with the API effectively.
+Este documento fornece uma referência detalhada dos endpoints da API disponíveis no sistema POS da Kontapro. Utilize esta referência para integrar e interagir efetivamente com a API.
+
+> **Observação:**  Os códigos de status de resposta da API não estão em conformidade com os padrões, utilizando **true** ou **false**. Os códigos de status de resposta da API serão atualizados para estar em conformidade com os códigos padrão HTTP. Por exemplo, o código **204** indica "Sem conteúdo".
